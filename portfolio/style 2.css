@@ -1,0 +1,54 @@
+.aboutme-header {
+    font-size: 12px;
+    color: cornflowerblue;
+}
+
+.home{
+   text-align: center;
+}
+
+img {
+    height: 400;float: left}
+
+#experience-list {
+    background-color: aliceblue;
+    line-height: 1.5em;
+}
+
+.headers {
+    font-family: Montserrat;
+}
+
+*{
+    font-family: Arial;
+}
+
+.skills {
+    color: navy;
+    background-color: aliceblue;
+    line-height: 1.5em;
+}
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightseagreen;
+    font-size: 1.5em;
+}
+
+li a {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: darkcyan;

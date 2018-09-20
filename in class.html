@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>In class practice problem</title>
+<script src="main.js"></script>
+<script>
+// Input: 1920, 1900
+// Output: 20, 19
+
+// If the last two number is 00, return the first two numbers
+// If the last two number is not 00, add 1 to first two number
+
+function convertToCentury(year) {
+var century = Math.ceil(year/100);
+return century;
+}
+
+// Input: stress
+// Output: tre
+
+// Look at each letter in the string
+// Store the letter in a variable
+// Push it into a new array
+// Loop it
+// If the letter is not any of the value in the new array, push it into another final array
+
+var letterArray = []
+
+function returnNonRepeating(string) {
+var stringObject = {};
+for (var character of string) {
+    var letter = character;
+}
+
+}
+
+var testTrue = [2, 4, 16, 256];
+var testFalse = [2,4,6,8];
+function cubeSequence( numbers ) {
+var num1 = null;
+var counter = 0;
+for(var n=1;n<numbers.length;n++){
+    num1=numbers[n-1]*numbers[n-1]
+    if(numbers[n]!==num1){
+        counter ++
+    }
+}
+var result = counter>0 ? false : true;
+return result;
+}
+
+/*
+make change: return an object, given a particular number less than 1 dollar, what
+change would be required to equal it
+input:
+88
+output:
+{
+25: 3,
+10: 1,
+5: 1,
+1: 3
+}
+*/
+
+// function makeChange(amount) {
+
+// }
+
+// input: b3
+// output: white
+var columnArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+var rowwwsArray = [1, 2, 3, 4, 5, 6, 7, 8];
+
+var tileObject = {};
+
+function createTileObject() {
+var columnArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+var rowwwsArray = [1, 2, 3, 4, 5, 6, 7, 8];
+
+var tileObject = {};
+//go through column array, look at the even index
+for (var i = 0; i < columnArray.length; i += 2) {
+    var columnName = columnArray[i];
+    //go through rowsarray, look at the even index
+    for (var a = 0; a < rowwwsArray.length; a += 2) {
+        //if both array and row index are even, add their concatenation as a key to tileObject, assign value of black
+        tileObject[columnName + rowwwsArray[a]] = 'black';
+    }
+    //if row index is odd, assing valueof white
+    for (var a = 1; a < rowwwsArray.length; a += 2) {
+        tileObject[columnName + rowwwsArray[a]] = 'white';
+    }
+}
+//the same as above, but this time, do it for odd index of column
+for (var i = 1; i < columnArray.length; i += 2) {
+    var columnName = columnArray[i];
+    for (var a = 0; a < rowwwsArray.length; a += 2) {
+        tileObject[columnName + rowwwsArray[a]] = 'white';
+    }
+    for (var a = 1; a < rowwwsArray.length; a += 2) {
+        tileObject[columnName + rowwwsArray[a]] = 'black';
+    }
+}
+return tileObject;
+}
+
+createTileObject();
+
+function getTileColor(axis) {
+var result = tileObject[axis];
+return result;
+}
+
+var input1 = ['arp','live','pen','strong'];
+var input2 = ['alive','harp','armstrong','warp','toll']
+
+var input1 = ['strong'];
+var input2 = ['armstrong']
+var outputArray = [];
+function returnSameWords(array1,array2){
+
+for(var i=0, a=0;i<array1.length, a<array2.length; i++,a++){
+    var string1 = array1[i];
+    var string2 = array2[a];
+    for(var char1=0, char2=0;char1<string1.length, char2<string2.length;char1++,char2++){
+        var character1 = string1[char1];
+        var character2 = string2[char2];
+        if(character){
+            return string1
+        }
+    }
+}
+
+for(var a=0;i<array2.length; a++){
+
+}
+}
+
+function returnTrueorFalse(array) {
+var comparisonArray = array.slice().sort(function(a,b){
+    return a-b;
+});
+counter = 0;
+for (var i = 0; i < array.length; i++) {
+    if (array[i] !== comparisonArray[i]) {
+        counter++;
+    }
+}
+var result = counter > 0 ? false : true;
+return result;
+}
+
+var testInputTrue = [1, 2, 3, 4, 5];
+var testInputFalse = [1, 10, 8, 20];
+
+var input = ['four score and seven years ago, our forefathers brought forth upon this continent a new nation'];
+
+
+function countLetters(word) {
+var vowels = ['a', 'e', 'i', 'o', 'u'];
+var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
+    'x', 'y', 'z'
+];
+var syllables = {
+    vowels: 0,
+    consonants: 0
+};
+for (var i = 0; i < word.length; i++) {
+    for (var v = 0; v < vowels.length; v++) {
+        if (word[i] === vowels[v]) {
+            syllables.vowels += 1;
+        }
+    }
+    for (var c = 0; c < consonants.length; c++) {
+        if (word[i] === consonants[c]) {
+            syllables.consonants += 1;
+        }
+    }
+}
+return syllables;
+}
+
+
+var testNumbers = [1, 3, 2];
+var testWords = ['dog', 'planes', 'canary'];
+
+function pluralAgreement(numbers, words) {
+var output = [];
+for (var n = 0; n < numbers.length; n++) {
+    if (words[n].endsWith('s')) { //if the word is a plural
+        if (numbers[n] === 0 || numbers[n] > 1) { //and the corresponding array number is 0 or greater than 1
+            output.push(true);
+        } else {
+            output.push(false);
+        }
+    } else { //if word is singular
+        if (numbers[n] === 1) { //and array corresponding number is 1
+            output.push(true);
+        } else {
+            output.push(false);
+        }
+    }
+}
+return output;
+}
+
+
+
+var first = ['Dan', 'Jane', 'Jack'];
+var last = ['Hill', 'Black', 'Mill'];
+
+function combineArrays(firstNames, lastNames) {
+var outputNames = [];
+for (var nameIndex = 0; nameIndex < firstNames.length; nameIndex++) {
+    var names = {
+        first: "",
+        last: ""
+    };
+    names.first = firstNames[nameIndex];
+    names.last = lastNames[nameIndex];
+    outputNames.push(names);
+}
+return outputNames;
+}
+
+
+
+function wordValley(wordArray) {
+var wordValley = [];
+
+wordArray.sort(function(a,b){
+    return b.length-a.length;
+});
+for (var n = 0; n <= wordArray.length - 1; n += 2) {
+    wordValley.push(wordArray[n]);
+};
+for (var n = wordArray.length - 1; n >= 0; n -= 2) {
+    wordValley.push(wordArray[n]);
+};
+return wordValley;
+}
+
+function repeatStr (n, s) {
+for(var i=0;i<n;i++){
+s+=s;
+}
+return s;
+}
+
+function findSmallest(args) {
+var currentNumber=args[0];
+for(var i=0;i<args.length;i++){
+    if(args[i]<currentNumber){
+        currentNumber=args[i];
+    }
+}
+return currentNumber;
+}
+
+function removeChar(str){
+var string = str.substring(0,str.length-2);
+string = str.substring(1,str.length-1);
+return string;
+}
+
+//['N','E','S','E','W','N'];
+//[E,N]
+function showDirection(directionList){
+if(directionList===["NORTH", "WEST", "SOUTH", "EAST"]){
+    return directionList;
+}
+var SNCounter = 0;
+var EWCounter = 0;
+var output = [];
+for(var d=0;d<directionList.length;d++){
+    if(directionList[d]==="NORTH"){
+        SNCounter++;
+    } else if(directionList[d]==="SOUTH"){
+        SNCounter--;
+    }
+    if(directionList[d]==="EAST"){
+        EWCounter++;
+    } else if(directionList[d]==="WEST"){
+        EWCounter--;
+    }
+}
+if(EWCounter!==0){
+    EWCounter>0 ? output.push("EAST") : output.push("WEST")
+} 
+if(SNCounter!==0){
+    SNCounter>0 ? output.push("NORTH") : output.push("SOUTH")
+} 
+return output;
+}
+
+// function reverseIfLessThanFive(string){
+//     var splitString = string.split(" ");
+//     var output = ""
+//     for(var s=0;s<splitString.length; s++){
+//         var currentString = splitString[s];
+//         if(currentString.length>=5){
+//             var reversed = ""
+//             for(var a=currentString.length-1;a>=0;a--){
+//                 reversed+=currentString[a];
+//             }
+//             output+=reversed + " ";
+//         } else {
+//             output+=splitString[s] + " ";
+//         }
+//     }
+//     return output;
+// }
+
+function reverseIfLessThanFive(string){
+var splitString = string.split(" ");
+var output = [];
+for(var s=0;s<splitString.length; s++){
+    var currentString = splitString[s];
+    if(currentString.length>=5){
+        var reversed = [];
+        for(var a=currentString.length-1;a>=0;a--){
+            var lastCharacter = currentString[currentString.length-1];
+            if(lastCharacter!=="?" || lastCharacter!=="!" || lastCharacter!=="," || lastCharacter!=="."){
+                reversed.push(currentString[a]);
+            } else {
+                reversed[reversed.length-1]=currentString[currentString.length-1];
+            }
+        }
+        var reversedString = reversed.join("");
+        output.push(reversedString);
+    } else {
+        output.push(splitString[s]);
+    }
+}
+var result = output.join(" ");
+return result
+}
+
+// function isSameBracket(string){
+//     var opening = ["(","{","["];
+//     var closing = [")","}","]"];               
+//     var brackets = string.split("");
+//     var matchCounter = 0;
+//     var counterOfFalse = 0;
+//         for(var b=0;b<brackets.length;b++){
+//             var pair = [];
+//             var bracketIndex = opening.indexOf(brackets[b]);
+//             pair.push(brackets[0]);
+//             brackets.splice(b,1);
+//             for(var a=0;a<brackets.length;a++){
+//                 if(closing.includes(brackets[bracketIndex])){
+//                 matchCounter++;
+//                 pair.push(brackets[a]);
+//                 brackets.splice(a,1);
+//                 break;
+//                 }
+//             }
+//             if(closing.includes(pair[0])){
+//                 counterOfFalse ++;
+//             }
+//         }
+//         // if(closing.includes(pair[0])){
+//         //     counterOfFalse ++;
+//         // }
+//     if((matchCounter%2>0) && counterOfFalse===0){
+//     return true;
+//     } else {
+//     return false;
+//     }
+// }
+
+
+// function isIncluded(strings,word){
+//     var wordArray = word.split("");
+//     var stringArray = strings.split("");
+//     var wordObject = {};
+//     var stringObject = {};
+//     var wordLength = word.length;
+//     for(var w=0;w<wordArray.length;w++){
+//         var character = wordArray[w];
+//         if(!wordObject[character]){
+//             wordObject[character]=1;
+//         } else {
+//             wordObject[character]++;
+//         }
+//     }
+//     for(var s=0;s<stringArray.length;s++){
+//         var char = stringArray[s];
+//         if(!stringObject[char]){
+//             stringObject[char]=1;
+//         } else {
+//             stringObject[char]++;
+//         }
+//     }
+//     var counter = 0;
+//     for(var key in wordObject){
+//         if(wordObject[key]===stringObject[key]){
+//             counter++;
+//         }
+//     }
+//     if(counter===wordLength){
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+//C—>G
+//A—>T
+function flipDNAsequence(DNA){
+var resultDNA = ""
+for(var g=0;g<DNA.length;g++){
+    if(DNA[g]==="C"){
+        resultDNA+='G';
+    }
+    if(DNA[g]==="A"){
+        resultDNA+='T';
+    }
+    if(DNA[g]==="T"){
+        resultDNA+='A';
+    }
+    if(DNA[g]==="G"){
+        resultDNA+='C';
+    }
+}
+return resultDNA;
+}
+
+function makeDuplicates(num,letter){
+var output = [];
+var alphabet = ['a','b', 'c', 'd','e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n','o', 'p', 'q', 'r', 's', 't','u', 'v', 'w','x','y','z']
+var sequence = null;
+if(!letter){
+    sequence = alphabet.splice(0,num).join("");
+} else {
+    var charIndex = alphabet.indexOf(letter);
+    sequence = alphabet.splice(charIndex,num).join("");
+}
+    for(var a =0;a<sequence.length;a++){
+    var currentChar = sequence[a];
+    var upper = currentChar.toUpperCase();
+    output.push(upper);
+    for(var l=0;l<a;l++){
+        var lower = currentChar.toLowerCase();
+        output[a]+=lower;
+    }
+}
+var outputString = output.join("-");
+console.log(performance.now())
+return outputString;
+}
+
+function letterTrain(numOfDifKindOfLetters, beginningLetter) {
+var outputString = "";
+if (beginningLetter) {
+var charCode = beginningLetter.charCodeAt(0);
+outputString += beginningLetter.toUpperCase();
+} else {
+var charCode = "a".charCodeAt(0);
+outputString += "a".toUpperCase();
+}
+for (var i = 2; i <= numOfDifKindOfLetters; i++) {
+var nextChar = String.fromCharCode(charCode + 1);
+outputString += "-"+nextChar.toUpperCase() + nextChar.repeat(i - 1);
+console.log(nextChar.toUpperCase());
+console.log(nextChar.repeat(i - 1))
+charCode = charCode + 1
+}
+console.log(performance.now())
+return outputString;
+}
+
+
+function findMissingLetter(sequence){
+var ASCII= [];
+for(var letter of sequence){
+    ASCII.push(letter.charCodeAt());
+}
+for(var a=0;a<ASCII.length;a++){
+    if(ASCII[a+1]-ASCII[a]!==1){
+        var ASCIInumber = ASCII[a]+1;
+        missingLetter = String.fromCharCode(ASCIInumber);
+        break;
+    }
+}
+console.log(performance.now())
+return missingLetter;
+}
+
+function returnPossibleDice(dices){
+    dices = dices.split("");
+    var numberOfArrays = parseInt(dices[0]);
+    var range = parseInt(dices[2]);
+    var outputArray = new Array(numberOfArrays);
+    for(var slot=0;slot<outputArray.length;slot++){
+        outputArray[slot]=Math.floor(Math.random() * (range))+1;
+    }
+    var sum = outputArray.reduce((a,b)=>a+b);
+    outputArray = outputArray.map(x=>"["+x+"]")
+    return  sum+""+outputArray;
+}
+
+/*var students = [
+  "George",
+  "Perry",
+  "Esther",
+  "Gerry",
+  "Chase",
+  "Steve",
+  "Mia",
+  "Sarah",
+  "Kyle",
+  "David",
+  "Michael",
+  "Rachel",
+  "Randy",
+  "Jonathan",
+  "Jaytrin",
+  "Hank",
+  "Torrie"
+]*/
+// C: ["Chase"]
+// D: ["David"]
+// E: ["Esther"]
+// G: ["George", "Gerry"]
+// H: ["Hank"]
+// J: ["Jonathan", "Jaytrin"]
+// K: ["Kyle"]
+// M: ["Mia", "Michael"]
+// P: ["Perry"]
+// R: ["Rachel", "Randy"]
+// S: ["Steve", "Sarah"]
+// T: ["Torrie"]
+function sortStudentNames(students){
+    students = students.sort();
+    var studentsObj = {};
+    for(var s=0;s<students.length;s++){
+        var currentStu = students[s];
+        if(!studentsObj[currentStu[0]]){
+            studentsObj[currentStu[0]]=[];
+            studentsObj[currentStu[0]].push(currentStu);
+        } else {
+            studentsObj[currentStu[0]].push(currentStu);
+        }
+    }
+}
+
+function reorder(nameAry) {
+    nameAry.sort();
+    var nameObj = {};
+    var letter;
+for (var i=0; i<nameAry.length; i++) {
+    letter = nameAry[i].charAt(0);
+    if(nameObj[letter] === undefined) {
+        nameObj[letter] = [];
+        nameObj[letter].push(nameAry[i]);
+    } else{
+        nameObj[letter].push(nameAry[i]);
+    }
+}
+}
+
+var arr = [false,1,0,1,2,0,'a',3];
+
+function moveZeros(array){
+    for(var i=0;i<array.length;i++){
+        let current = array[i];
+        if(current===0){
+            let zero = array.splice(i,1,);
+            array.push(zero[0]);
+        }
+    }
+    return array;
+}
+
+function makePigLatin(string){
+    string = string.split("")
+    let splice = string.splice(0,1).join("")
+    return string.join("") + splice+"ay";
+}
+
+
+function unscramble(first,second){
+    let firstObj = {};
+    let secondObj = {};
+    let trueCounter = 0;
+    for(var s=0;s<second.length;s++){
+        let letter = second[s];
+        if(!secondObj[letter]){
+            secondObj[letter]=1
+        } else{
+            secondObj[letter]++
+        }
+    }
+    let secondLength = Object.keys(secondObj).length
+    for(var f=0;f<first.length;f++){
+        let letter = first[f];
+        if(!firstObj[letter]){
+            firstObj[letter]=1
+        } else{
+            firstObj[letter]++
+        }
+    }
+    for(let char  in secondObj){
+        if(secondObj[char]<=firstObj[char]){
+            trueCounter++;
+        }
+    }
+    return trueCounter===secondLength ? true : false;
+}
+
+function flattenArray(arr){
+    let output = [];
+    if(typeof arr ==='object'){
+        for(let a=0;a<arr.length;a++){
+        if(typeof arr[a]==="object"){
+            if(typeof arr[a][0]==='object'){
+                output.push(arr[a][0][0]);
+            } else{
+                output.push(arr[a][0]);
+            }
+        } else{
+            output.push(arr[a])
+        }
+    }
+    }
+    else{
+        output.push(arr);
+    }
+    return output;
+}
+
+let notFlat = ['b',['a'],2,[[null]],1]
+
+</script>
+</head>
+
+<body>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /*
+        accum("abcd");    // "A-Bb-Ccc-Dddd"
+        accum("RqaEzty"); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+        accum("cwAt");    // "C-Ww-Aaa-Tttt"*/
+    function accum(s) {
+        var output = [];
+        for(var a =0;a<s.length;a++){
+            var currentChar = s[a];
+            var upper = currentChar.toUpperCase();
+            output.push(upper);
+            for(var l=0;l<a;l++){
+                var lower = currentChar.toLowerCase();
+                output[a]+=lower;
+            }
+        }
+        var outputString = output.join("-");
+        return outputString;
+    }
+
+    function getMiddle(s){
+        var middleIndex = s.length/2;
+        if(s.length%2===0){
+            var output = s[middleIndex-1]+s[middleIndex];
+        } else {
+            var output = s[Math.floor(middleIndex)];
+        }
+        return output;
+    }
+
+    function descendingOrder(n){
+        var numbers = n+"";
+        var numbers = numbers.split("");
+        numbers.sort(function(a,b){return b-a});
+        var output = parseInt(numbers.join(""));
+        return output;
+    }
+
+    //"bitcoin take over the world maybe who knows perhaps"
+    function findShortestWord(string){
+        return string.split(" ").sort(function(a,b){return a.length-b.length})[0].length;
+    }
+
+    /* XO("ooxx") => true
+    XO("xooxx") => false
+    XO("ooxXm") => true
+    XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+    XO("zzoo") => false*/
+    function XO(str) {
+        var lowCaseString = str.toLowerCase();
+        var characters = {};
+        for(var s of lowCaseString){
+            if(!characters[s]){
+                characters[s]=1
+            } else {
+                characters[s]+=1;
+            }
+        }
+        if(characters.x===characters.o){
+            return true
+        } else if(!characters.x & !characters.o){
+            return true
+        } else{
+            return false;
+        }
+    }
+
+    //findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2
+    //findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
+    function findUniq(arr) {
+        var mapObject = {};
+        for(var a=0;a<arr.length;a++){
+            var map = !mapObject[arr[a]] ? mapObject[arr[a]]=1 : mapObject[arr[a]]+=1;
+        }
+        for(var number in mapObject){
+            if(mapObject[number]===1){
+                var result = parseFloat(number);
+            }
+        }
+        return result;
+    }
+
+    function findOdd(A) {
+        var numObject = {};
+        for(var int=0;int<A.length;int++){
+            var number = A[int];
+            if(!numObject[number]){
+                numObject[number]=1
+            } else {
+                numObject[number]+=1;
+            }
+        }
+        for(var num in numObject){
+            if(numObject[num]%2>0){
+                var result= parseInt(num);
+            }
+        }
+        return result;
+    }   
+
+    // .reduce((a, b) => a + b, 0)
+
+    function findEvenIndex(arr){
+        for(var a=1;a<arr.length;a++){
+            var left = arr.slice(0,a);
+            left = left.reduce(function(a, b) { return a + b; })
+            var right = arr.slice(a+1,arr.length);
+            right = right.reduce(function(a, b) { return a + b; })
+            if(left===right){
+                return a;
+            }
+        }
+    }
+
+//  Test.assertEquals(checkCoupon('123','123','September 5, 2014','October 1, 2014'), true);
+// Test.assertEquals(checkCoupon('123a','123','September 5, 2014','October 1, 2014'), false);
+
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
+    var falseCounter = 0;
+    var months = {
+        'January': 1,
+        'February': 2,
+        'March': 3,
+        'April': 4,
+        'May': 5,
+        'June': 6,
+        'July': 7,
+        'August': 8,
+        'September': 9,
+        'October': 10,
+        'November': 11,
+        'December': 12
+    }
+    if(enteredCode!==correctCode){
+        falseCounter++
+    }
+    var currentDate=currentDate.split(" ");
+    var currentDay = parseInt(currentDate[1].substr(0,1));
+    var currentYear = parseInt(currentDate[2]);
+    var expirationDate=expirationDate.split(" ");
+    var expiredDay = parseInt(expirationDate[1].substr(0,2));
+    var expiredYear = parseInt(expirationDate[2]);
+    var currentMonth = months[currentDate[0]];
+    var expiredMonth = months[expirationDate[0]];
+    if(expiredYear<currentYear){
+        falseCounter++;
+    }
+    if(expiredYear===currentYear){
+        if(currentMonth>expiredMonth){
+            falseCounter++
+        }
+    }
+    if(expiredYear===currentYear && expiredMonth === currentMonth){
+        if(currentDay>expiredDay){
+            falseCounter++//if falseCounter is greater than 0, false
+        }
+    }
+    return falseCounter>0 ? false : true;
+}
+
+var decodeMorse = function(morseCode){
+    var morseDict = {
+                ".-": "A",
+                "-...": "B",
+                "-.-.": "C",
+                "-..": "D",
+                ".": "E",
+                "..-.": "F",
+                "--.": "G",
+                "....": "H",
+                "..": "I",
+                ".---": "J",
+                "-.-": "K",
+                ".-..": "L",
+                "--": "M",
+                "-.": "N",
+                "---": "O",
+                ".--.": "P",
+                "--.-": "Q",
+                ".-.": "R",
+                "...": "S",
+                "-": "T",
+                "..-": "U",
+                "...-": "V",
+                ".--": "W",
+                "-..-": "X",
+                "-.--": "Y",
+                "--..": "Z",
+                "-----": "0",
+                ".----": "1",
+                "..---": "2",
+                "...--": "3",
+                "....-": "4",
+                ".....": "5",
+                "-....": "6",
+                "--...": "7",
+                "---..": "8",
+                "----.": "9",
+                "...---...": "SOS",
+            };
+    var morse = morseCode.split("   ");
+    var morseWords = [];
+    var translatedWords = []
+    for(var w=0;w<morse.length;w++){
+        var currentWord = morse[w].split(" ");
+        morseWords.push(currentWord);
+    }
+    for(var w=0;w<morseWords.length;w++){
+        var morseChar = morseWords[w];
+        for(var c=0;c<morseChar.length;c++){
+            translatedWords.push(morseDict[morseChar[c]]);
+        }
+            translatedWords.push(" ");
+    }
+    translatedWords.splice(translatedWords.length-1,1);
+    return translatedWords.join("").trim();
+}
+
+/* persistence(39) === 3 // because 3*9 = 27, 2*7 = 14, 1*4=4
+                    // and 4 has only one digit
+
+persistence(999) === 4 // because 9*9*9 = 729, 7*2*9 = 126,
+                        // 1*2*6 = 12, and finally 1*2 = 2
+
+persistence(4) === 0 // because 4 is already a one-digit number*/
+
+// function persistence(num) {
+// function persist(num){
+//     if(num===undefined){
+//         var numArray = num.toString().split("").map(Number);
+//         num =  numArray.reduce( (a,b) => a * b );
+//         return num;
+//     } else{
+//     return persist;
+//     }
+// }
+// }
+
+function add(initialValue){
+    function adder(nextVal){
+        if(nextVal===undefined){
+            return initialValue;
+        } 
+        initialValue+=nextVal;
+        return adder;
+    }
+    return adder;
+}
+
+// highAndLow("1 2 3 4 5"); // return "5 1"
+// highAndLow("1 2 -3 4 5"); // return "5 -3"
+// highAndLow("1 9 3 4 -5"); // return "9 -5"
+
+function highAndLow(numbers){
+    var numbers = numbers.split(" ").map(Number).sort((a,b)=>b-a);
+    return numbers[0]+" "+numbers[numbers.length-1];
+}
+
+//"How can mirrors be real if our eyes aren't real"
+function toJadenCase(string){
+    stringArray = string.split(" ");
+    var output = [];
+    for(var s=0;s<stringArray.length;s++){
+        var word=stringArray[s];
+        for(var w=0;w<word.length;w++){
+            if(w===0){
+                var upper = word[w].toUpperCase();
+                output.push(upper);
+            } else{
+                output.push(word[w]);
+            }
+        }
+        if(s!==stringArray.length-1){
+            output.push(" ")
+        }
+    }
+    return output.join("");
+}
+
+//"This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+function disemvowel(str) {
+    var vowels = ['a','e','i','o','u','A','E','I','O','U'];
+    var strArr = str.split(" ");
+    var output = [];
+    for(var w=0; w<strArr.length;w++){
+        var word = strArr[w];
+        for(var c=0;c<word.length;c++){
+            if(!vowels.includes(word[c])){
+                output.push(word[c]);
+            } 
+        }
+        if(w!==strArr.length-1){
+            output.push(" ");
+        }
+    }
+    return output.join("");
+}
+
+//sortArray([5, 3, 2, 8, 1, 4]) == [1, 3, 2, 8, 5, 4]
+function sortArray(array) {
+    if(array[0]===undefined){
+        return [];
+    }
+    var odd = [];
+    for(var n=0; n<array.length;n++){
+        if(array[n]%2>0){
+            odd.push(array[n]);
+            array.splice(n,1,"odd");
+        }
+    }
+    odd.sort((a,b)=>a-b);
+    for(var n=0; n<array.length;n++){
+        if(array[n]==='odd'){
+            for(var o=0;o<odd.length;o++){
+                array[n]=odd[0];
+                odd.splice(o,1)
+                console.log(array);
+                break;
+            }
+        }   
+    }
+    return array;
+}
+
+function getCount(str) {
+var vowelsCount = 0;
+var vowels = ['a','e','i','o','u']
+for(var letter of str){
+    if(vowels.includes(letter)){
+        vowelsCount++;
+    }
+        }
+return vowelsCount;
+}
+
+function squareDigits(num){
+num = num + "";
+return parseInt(num.split("").map(Number).map((x)=>x**2).join(""));
+}
+
+// expandedForm(12); // Should return '10 + 2'
+// expandedForm(42); // Should return '40 + 2'
+// expandedForm(70304); // Should return '70000 + 300 + 4'
+function expandedForm(num) {
+    num = num + "";
+    num = num.split("").map(Number).reverse()
+    var zero = "0"
+    var output = "";
+    for(var n=num.length-1; n>=0;n--){
+        var expanded = "";
+        expanded = num[n]+zero.repeat(n);
+        if(Number(expanded)!==0){
+            output+=expanded+" + ";
+        }
+    }
+    return output.substr(0,output.length-3);
+}
+
+function findSumOf3or5Multiples(number){
+    if(number<=0){
+        return 0;
+    }
+    var rangeArray = [...Array(number).keys()];
+    var multiples = rangeArray.filter(value=>value%3===0 || value%5===0)
+    return multiples.reduce((a, b) => a + b)
+}
+
+function findOutlier(integers){
+var odd = integers.filter(value=>value%2===0)
+var even = integers.filter(value=>value%2!==0)
+return odd.length===1 ? odd[0] : even[0]
+console.log(performance.now)
+}
+
+
+//"2 4 7 8 10"
+function iqTest(numbers){
+numbers = numbers.split(" ").map(x=>parseInt(x))
+var odd = numbers.filter(a=>a%2===0)
+var even = numbers.filter(a=>a%2!==0)
+var theNumber = null;
+odd.length===1 ? theNumber = odd[0] : theNumber = even[0]
+return numbers.indexOf(theNumber)+1;
+}
+
+var isSquare = function(n){
+return n<0 ? false : Number.isInteger(Math.sqrt(n));
+}
+
+//ABBCcAD
+var uniqueInOrder=function(iterable){
+if(typeof iterable==='string'){
+    iterable=iterable.split("");
+}
+for(var a=0;a<iterable.length;a++){
+    for(var i=1;i<iterable.length;i++){
+        if(iterable[i]===iterable[i-1]){
+            iterable.splice(i,1);
+        }
+    }
+    }
+return iterable;
+}
+
+// function encrypt(text, n) {
+//     var output = [];
+//         for(t=1;t<text.length;t+=2){
+//             output.push(text[t]);
+//         }
+//         for(c=0;c<text.length;c+=2){
+//             output.push(text[c]);
+//         }
+//     if(n>1){
+//         for(a=1;a<n;a++){
+//             for(t=1;t<output.length;t+=2){
+//             output.push(output[t]);
+//         }
+//         for(c=0;c<output.length;c+=2){
+//             output.push(output[c]);
+//         }
+//         output.splice(0,text.length-1);
+//         }
+//     }
+//     return output.join("");
+// }
+
+
+// function decrypt(encryptedText, n) {
+
+// }
+
+function isIsogram(str){
+    str = str.toUpperCase();
+    let map = {};
+    let falseCounter = 0;
+    for(let s=0;s<str.length;s++){
+        let letter = str[s];
+        if(!map[letter]){
+            map[letter]=1
+        } else {
+            map[letter]++
+        }
+    }
+    for(let char in map){
+        if(map[char]>1){
+            falseCounter++
+        }
+    }
+    return falseCounter>0 ? false : true;
+}
+
+function sumTwoSmallestNumbers(numbers) {  
+    let sortedNumbers = numbers.sort((a,b)=>a-b);
+    return sortedNumbers[0]+sortedNumbers[1];
+}
+
+// function validatePIN (pin) {
+//     pin = pin.split('').filter(a=>!isNaN(a))
+//     return (pin.length ===4 || pin.length === 6) && !isNaN(pin);
+// }
+
+function filter_list(l) {
+    return l.filter(x=>typeof x === 'number');
+}
+
+function maskify(cc) {
+    if(cc.length>4){
+        let lastfour =  cc.slice(-4);
+        let code = '#'
+        return code.repeat(cc.length-4) + lastfour
+    } else {
+        return cc;
+    }
+}
+
+</script>
+
+    
+</head>
+<body>
+    
+</body>
+</html>

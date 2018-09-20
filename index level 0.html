@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level 0</title>
+    <script>
+        // function invert_negatives(number) {
+        //     if(number>0){
+        //         var result = number*-1;
+        //     } else if(number<0){
+        //         result = number;
+        //     } else if(typeof number!='NaN'){
+        //         result = false;
+        //     }
+        //     return result;
+        // }
+
+        function random_range(start_num,end_num) {
+            var output = Math.floor(Math.random()*(end_num - start_num + 1)) + start_num;
+            return output;
+        }
+
+        // function capitaizeEveryOtherCharacter(string){
+        //     var outputString = "";
+        //     for(var i=0; i<string.length; i++){
+        //         if(i%)
+
+        //     }
+        // }
+
+        // Make an array for vowels
+        //     Create a vowel storage
+        // Look at each character in the string
+        // If it’s a vowel, add it the vowel storage
+
+        // var testString = "four score and seven years ago";
+        // var vowels = "aeiou";
+        // var output = "";
+        // function returnVowels(string) {
+        //     for (var i = 0; i < string.length; i++) {
+        //        for(var v=0; v<vowels.length; v++){
+        //            if(string[i]===vowels[v]){
+        //                output+=string[i];
+        //            }
+        //        }
+        //     }
+        //     return output;
+        // }
+        // console.log(returnVowels(testString));
+
+        function doMath(num1,num2,operator){
+            if(operator==='+'){
+                return num1+num2;
+            } else if(operator==='-'){
+                return num1-num2;
+            } else if(operator==='x'){
+                return num1xnum2;
+            } else if(operator==='÷'){
+                return num1/num2;
+            }
+        }
+        
+        var i =0;
+        var a=7;
+        for(; i<=7, a>=0; i++, a--){
+            console.log('i is: ', i);
+            console.log('a is: ', a);
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

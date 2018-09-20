@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drills</title>
+    <script>
+        /*
+given a number and an array of numbers, return true if the 
+number can be evenly divided into each element in the array of numbers
+for example: 
+input:
+   3 
+   [12, 15, 13, 21]
+   
+ output:
+   false
+*/
+
+function findNonCommonDivisor(divisor, numbers) {
+    counterOfFalse = 0;
+    for(var n=0;n<numbers.length;n++){
+        if(numbers[n]%divisor>0){
+        counterOfFalse++;
+    }
+    }
+    if(counterOfFalse>0){
+        return false;
+    } else{
+        return true;
+    }
+}
+
+/*
+write a function that takes in a string and breaks it up into an object
+The key/values will be separated by specified charaters, and the 
+key/value pairs will be separated by a specified characters
+for example: 
+input: 
+  name=dan&age=43&ninjas=pirates
+  =
+  &
+output: 
+  {
+    name: 'dan',
+    age: '43',
+    ninjas: 'pirates'
+  }
+*/
+// function parseStringToObject(sourceString, keyValueDelimiter, pairDelimiter) {
+//     var splitArray = sourceString.split(pairDelimiter);
+//     var outputObject = {};
+//     var moreSplit = [];
+//     for(var a=0;a<splitArray.length;a++){
+//         for(var s=0;s<splitArray[a].length;s++){
+//            moreSplit.push(splitArray[a].split(keyValueDelimiter));
+//            break;
+//         }
+//     }
+//     for(var m=0;m<moreSplit.length;m++){
+//         outputObject[moreSplit[m][0]]=moreSplit[m][1];//add to outputObject with index at 0 being property and index at 1 being value
+//     }
+//     return outputObject;
+// }
+
+/*
+Write a function that used a string and finds the word with the most number of repeated letters
+input: 
+    "frank mooot boat scooter"
+output:
+    'moot'
+
+    You can go through and make a count of the letters in the word with, for example, an object
+then see how many letters occur more than once
+
+or you could put all the letters into an array when you see them if it doesn't exist in the array already, and then if you see them again, you put them into a new array if they aren't in the new array
+so fthe first array is "letters the first time I see them"
+the 2nd array is "letters I saw more than once"
+then you see how long the 2nd array is, and store that length.
+whichever one has the longest array wins
+*/
+function repeatingWord(str) {
+    var splitString = str.split(" ");
+    // splitString.sort(function(a,b){
+    //             return b.length-a.length;
+    //         });
+    // return splitString;
+    var letters = {}
+    for(var s=0;s<splitString.length;s++){
+        var letterKey = splitString[s];
+        for(var l=0;l<letterKey.length;l++){
+            if(letters[letterKey[l]]=undefined){
+                letters[letterKey[l]]=1;
+            } else {
+                letters[letterKey[l]]+=1;
+            }
+        }
+        return letters;
+        }}
+
+var teststring = "lgisellelel"
+function countRepeatingLetters(string){
+    var mapObject = {};
+    for(var s=0;s<string.length;s++){
+        for(var letter in mapObject){
+            if(!mapObject[letter]){
+                mapObject[letter]+=1;
+            }
+        }
+    } 
+}
+
+/*
+given a string and a number, return an array of strings, none of which are longer than the number
+for example:
+input:
+  'four score and seven years ago, our forefathers brought forth upon this continent a new nation'
+  10
+output:
+  [
+    'four score',
+    ' and seven',
+    ' years ago',
+    ', our fore',
+    'fathers br',
+    'ought fort',
+    'h upon thi',
+    's continen',
+    't a new na',
+    'tion'
+  ]
+*/
+
+// function changeStrToColumn(sourceString, columnWidth) {
+//     var result = [];
+//     var newString= sourceString;
+//     for(var s=0;s<sourceString.length;s+=columnWidth){
+//         var extracted = newString.slice(0,columnWidth);
+//         var newString = newString.slice(columnWidth,sourceString.length);
+//         result.push(extracted);
+//     }
+//     return result;
+// }
+
+/*
+Given a string, output that string with every letter capitalized
+EXCEPT the first and last letters
+for example: 
+input:
+   stuff
+   
+ output:
+   sTUFf
+*/
+
+function mountainCase(string) {
+    var mountainString = "";
+    for(var i=0;i<string.length;i++){
+        if(i!==0 && i!==string.length-1){
+            var upperCase = string[i].toUpperCase();
+            mountainString+=upperCase;
+        } else {
+            mountainString+=string[i];
+        }
+    }
+    return mountainString;
+}
+
+/*
+Determine whether or not the given string can be formed into a palindrome:
+input:
+  'rcearca'  (mix up of racecar, which is a palindrome)
+output:
+  true
+*/
+
+function findPossiblePalindrome( letters ) {
+    var requiredRepeatingLetters = Math.floor(letters.length/2);
+    var letters = letters.toUpperCase();
+    var repeatLettersCounter = 0;
+    var countObject = {};
+    for(var l=0;l<letters.length;l++){
+        var letter = letters[l];
+        if(!countObject[letter]){
+            countObject[letter]=1;
+        } else {
+            countObject[letter]+=1;
+        }
+    }
+    for(var letter in countObject){
+        if(countObject[letter]>1){
+            repeatLettersCounter++;
+        }
+    }
+    if(requiredRepeatingLetters===repeatLettersCounter){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/*
+Given 2 numbers, divide the first number by the second
+and then output the number with commas put in the appropriate place
+for example: 
+input: 
+  1054204
+  2
+output: 
+  '527,102'
+*/
+function divideAndFormat(dividend, divisor) {
+    var answer =  "" + dividend/divisor;
+    var decimalIndex = answer.indexOf(".");
+    var answerArray = answer.split("");
+    if(dividend%divisor>0){
+        for(var r=decimalIndex-3;r>0;r-=3){
+            answerArray.splice(r,0,",");
+        }
+    } else {
+        for(var r=answerArray.length-3;r>0;r-=3){
+            answerArray.splice(r,0,",");
+        }
+    }
+    var output = answerArray.join("");
+    return output;
+}
+
+/*
+Given 2 strings, return a string with the difference between the longest and the shortest
+input: 
+    "corrupted"
+    "carrumba
+output:
+    'opted'
+*/
+// function hashDifference(firstString, secondString) {
+//     var output = "";
+//     for(var i=0;i<firstString.length;i++){
+//         if(firstString[i]!==secondString[i]){
+//             output+=firstString[i];
+//         }
+//     }
+//     return output;
+// }
+
+var start=1;
+/*
+word count: determine the count of words in a sentence
+for example: 
+input:
+  "This is the song that never ends"
+ output:
+  7
+*/
+function wordCount( sentence ){
+    return sentence.split("").length;   
+}
+
+/*
+write a function that returns an array of words that exist in two different sentences
+for example: 
+input: 
+  "We went to the pool and had a drink"
+  "So you went and had a drink?"
+output: 
+  ["went", "and", "had", "a", "drink"]
+*/
+function findCommonWords( sentence1, sentence2 ){
+    var result = [];
+    var object = {};    
+    sentence1 = sentence1.toLowerCase();
+    sentence1 = sentence1.split(" ");
+    sentence2 = sentence2.toLowerCase();
+    sentence2 = sentence2.split(" ");
+    for(var s1=0;s1<sentence1.length;s1++){
+        var letter = sentence1[s1];
+        if(!object [letter]){
+            object [letter] = 1;
+        } else {
+            object [letter]++;
+        }
+    }
+    for(var s2=0;s2<sentence2.length;s2++){
+        var letter = sentence2[s2];
+        if(!object[letter]){
+            object[letter] = 1;
+        } else {
+            object[letter]++;
+        }
+    }
+    for(var key in object){
+        if(object[key]>1){
+            result.push(key);
+        }
+    }
+    return result;
+}
+
+/*
+Write a function that takes in a sentence and divides it in half (rounded down)
+input: 
+    'Would you like to have some tea?'
+output:
+    'Would you like t'
+*/
+function getHalfSentence( sentence ){
+    var halfIndex = sentence.length/2;//16
+    var halfSentence = sentence.substring(0,halfIndex);
+    return halfIndex;
+}
+
+/*Extract Number.  Given a string, extract all the digits from the string
+for example: 
+input:
+   'hb4hsb3ns23'
+   
+ output:
+   4323
+*/
+
+function extractNumber(string) {
+    var numbers = /[0-9]/g;
+    return parseInt(string.match(numbers).join(""));
+}
+
+/*
+Find character percent.  Given a string and a character, 
+find the percentage of the sentence made up by that character
+round the percent down:
+input:
+  'mississippi', 'i'
+output:
+  36
+*/
+
+function findCharacterPercent( string, letter ) {
+    var letter = new RegExp(letter,"g");
+    var matches = string.match(letter);
+    return Math.round((matches.length)/(string.length)*100);
+}
+
+/*
+Extract between strings.  
+Given an object with 3 strings:
+start, end, source
+Look in the source string and return the part between
+the start and the end
+for example: 
+input: 
+  {
+    start: 'ha',
+    end: 'moo',
+    source: 'misterhasillybillymoodogdude'
+  }
+output: 
+  'sillybilly'
+*/
+function extractBetweenStrings(extractOptions) {
+    var source = extractOptions.source;
+    var start = extractOptions.start;
+    var end = extractOptions.end;
+    var startIndex= source.indexOf(start);
+    var endIndex = source.indexOf(end);
+    var output = source.substring(startIndex+start.length,endIndex);
+    return output;
+}
+
+/*
+Proper capitalizization.  Given a string, 
+return the string with proper capitalization 
+based on punctuation of periods, question marks, and 
+exclamation marks
+input: 
+    "i really like it! how about you? i think it is cool."
+output:
+    "I really like it! How about you? I think it is cool."
+*/
+function properCapitalization(sentence) {
+    var punctuations = ['.','?','!'];
+    var senArray = sentence.split("");
+    for(var s=0;s<senArray.length;s++){
+        if(s===0){
+            senArray[0] = sentence[0].toUpperCase();
+        }
+        if(punctuations.includes(senArray[s]) && s!==senArray.length-1){//if current character is a punctuation
+            var puncIndex = senArray.indexOf(senArray[s]);//index of punctuation
+            if(senArray[puncIndex+2]===" "){
+                var upper = senArray[s+3].toUpperCase();
+                senArray[s+3] = upper;
+            } else{
+                upper = senArray[s+2].toUpperCase();
+                senArray[s+2] = upper;
+            }
+        }
+    }
+    var output = senArray.join("");
+    return output;
+}
+
+    /*
+find cube: determine whether each number in an array is the square root of the next
+for example: 
+input:
+  [2, 4, 16, 256]
+  ,
+  
+ output:
+   true
+*/
+
+function cubeSequence( numbers ) {
+    var trueCounter = 0;
+    var first = numbers[0];
+    for(var n=1;n<numbers.length;n++){
+        if(first*first===numbers[n]){
+            trueCounter++;
+            first = numbers[n];
+        }
+    }
+    return trueCounter===numbers.length-1 ? true : false;
+}
+
+/*
+expandCode: given a code of letters and numbers, based on the number
+expand the following letters by the number times.  Return that expanded string
+input: 
+    "4dude3hello"
+output:
+
+    "dudedudedudedudehellohellohello"
+
+*/
+function expandCode(string) {
+    var rangeArray = ['0','1','2','3','4','5','6','7','8','9'];
+    var numArray = string.split("");
+    var numIndex = [];
+    for(var c=0;c<numArray.length;c++){
+        var char = numArray[c];
+        for(var n=0;n<rangeArray.length;n++){
+            if(char===rangeArray[n]){
+                numIndex.push(numArray.indexOf(char));
+            }
+        }  
+    }
+    var string1 = numArray.slice(numIndex[0],numIndex[1]).join("");
+    var repeatNum = parseInt(string1[0]);
+    var repeatString1 = string1.substring(1,string1.length).repeat(repeatNum);
+    var string2 = numArray.slice(numIndex[1],numArray.length).join("");
+    var repeatNum2 = parseInt(string2[0]);
+    var repeatString2 = string2.substring(1,string2.length).repeat(repeatNum2);
+    return repeatString1+repeatString2;
+}
+
+/*
+largeNumberArrangement: given a number, rearrange the digits in such a way
+as to give the largest number possible
+input:
+  253949
+output:
+  995432
+*/
+
+function largeNumberArrangement( number ) {
+    var number = number+""
+    var numberArray = number.split("");
+    var toNumber = (a)=> parseFloat(a);
+    return parseInt(numberArray.map(toNumber).sort((a,b)=>b-a).join(""));
+}
+
+/*
+mapToAllValues: write a function that takes in an array and a function,
+it calls the function on each element in the array and returns that array
+
+input: 
+  [1,2,3,4,5], function( num ){ return num*2 }
+output: 
+  [2,4,6,8,10]
+*/
+function mapToAllValues( array, callbackFunction ) {
+    return array.map(callbackFunction);
+}
+
+/*
+alternateValues: given two arrays, alternate the values depending how
+many elements are in each
+input 1: 
+  [1,2,3,4,5,6] ['a','b','c']
+output 1:
+  [1,2,'a',3,4,'b',5,6,'c']
+input 2:
+  [1,2,3] ['a','b','c']
+output 2: 
+  [1,'a',2,'b',3,'c']
+    
+
+*/
+function alternateValues(array1, array2) {
+    var alternateNum = array1.length/array2.length
+        if(alternateNum===1){
+            for(var a=alternateNum;a<=array1.length;a+=alternateNum+1){
+            for(var a2=0;a2<array2.length;a2++){
+                    array1.splice(a,0,array2[a2]);
+                    array2.splice(a2,1);
+                    break;
+            }
+        }
+    } else {
+            for(var a=alternateNum;a<=array1.length;a+=alternateNum+1){
+            for(var a2=0;a2<array2.length;a2++){
+                    array1.splice(a,0,array2[a2]);
+                    array2.splice(a2,1);
+                    break;
+            }
+        }
+    }
+    return array1;
+}
+
+/*
+stringScramble: given two strings, determine if if one string's letters
+can be rearranged to form a part of the second string's letters string's letters
+input:
+  'heloooolwrdlla','helloworld'
+output:
+  true
+*/
+
+function stringScramble( str1, str2 ) {
+    var str1 = str1.split("");
+    var str2 = str2.split("");
+    var str1Obj = {};
+    var str2Obj = {};
+    for(var l=0;l<str1.length;l++){
+        var letter = str1[l];
+        if(!str1Obj[letter]){
+            str1Obj[letter]=1;
+        } else {
+            str1Obj[letter]++;
+        }
+    }
+    for(var l2=0;l2<str2.length;l2++){
+        var letter=str2[l2];
+        if(!str2Obj[letter]){
+            str2Obj[letter]=1;
+        } else {
+            str2Obj[letter]++;
+        }
+    }
+    var trueCounter = 0;
+    var length = Object.keys(str2Obj).length;
+    for(var key in str2Obj){
+        if(str2Obj[key]<=str1Obj[key]){
+            trueCounter++;
+        }
+    }
+    if(trueCounter===length){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+/*
+checkPrime: given a number, determine if the number is prime
+for example: 
+input1:
+  49
+  
+ output1: 
+  false
+  
+input2: 
+  157
+  
+output2:
+   true
+*/
+
+function checkPrime( number ) {
+    var checkRange = Math.round(number/2);
+    var rangeArray = [...Array(checkRange+1).keys()];
+    var nonPrimeCounter = 0;//if this counter is greater than 0, not a prime number
+    for(var n=2;n<rangeArray.length;n++){
+        if(number%n===0){//if the number has no leftover, it's not prime number
+            nonPrimeCounter++;
+        }
+    }
+    return nonPrimeCounter>0 ? false : true;
+}
+
+/*
+insertIntoNumber: insert a dash between odd numbers, an astericks between
+even numbers
+input 1: 
+  4546793
+output 1:
+  '454*67-9-3'
+input 2:
+  56647304
+output 2: 
+  '56*6*47-304'
+    
+
+*/
+function insertIntoNumber(number) {
+    var number = number+""
+    var numberArray = number.split("");
+    var ConvertToNumber = (a)=> parseFloat(a);
+    numberArray = numberArray.map(ConvertToNumber);
+    for(var n=1;n<numberArray.length;n++){
+        var currentNo = numberArray[n];
+        if(currentNo%2===0){
+            if(numberArray[n-1]%2===0){
+                numberArray.splice(n,0,'*');
+            }
+        } else if(currentNo%2>0){
+            if(numberArray[n-1]%2>0){
+                numberArray.splice(n,0,'-');
+            }
+        }
+    }
+    return numberArray.join("");
+}
+
+/*
+oddResort: given an array of numbers, leave the even numbers in place
+and sort the odd numbers IN PLACE
+for example: 
+input:
+  [4,2,3,6,7,1,8,10,9]
+  
+ output: 
+  [4,2,1,6,3,7,8,10,9]
+*/
+
+function oddResort( numberArray ) {
+  console.log('odd resort')
+}
+
+/*
+getMinutesFromTimes: given two standard format times with am or pm, determine
+the number of minutes between them
+input1: 
+  "12:30pm","12:00am"
+output1: 
+  690
+input2:
+  "1:23am","1:08am"
+output2:
+  1425
+*/
+function getMinutesFromTimes( time1, time2 ) {
+    console.log('minutes')
+}
+
+/*
+Make a function, pentagonalCount, that takes in a count of layers in a series of dots
+These dots are arranged in pentagonal shapes like the following:
+https://i.imgur.com/fYj3yvL.png
+for example:
+input:
+  2
+output:
+  6
+input: 
+  5
+output:
+  51
+*/
+
+function pentagonalCount( layers ){
+    console.log('pentagonal')
+}
+
+/*
+detect haiku:  given an array with strings, 
+and the strings with words (syllables separated by hyphens), determine if the array
+is in the form of a haiku (5-7-5)
+for example: 
+  
+input: 
+[
+  [
+    "oh we love to code",
+    "mak-ing our dreams now come true",
+    "show me the mo-ney"
+  ]
+]
+output: 
+  true
+*/
+function detectHaiku( lines ) {
+    var lines = lines[0];
+    for(var l=0;l<lines.length;l++){
+        var newLine = lines[l].replace(/-/g," ");
+        lines.splice(l,1,newLine)
+    }
+    var spaceOutput = [];
+    for(var line of lines){
+        var spaceCounter = 0;
+        for(var char of line){
+            if(char===" "){
+            spaceCounter++
+        }
+        }
+        spaceOutput.push(spaceCounter);
+    }
+    var output = parseInt(spaceOutput.join(""));
+    return output === 464 ? true : false;
+}
+
+/*
+make change: return an object, given a particular number less than 1 dollar, what 
+change would be required to equal it
+input:
+  88
+output:
+  {
+    25: 3,
+    10: 1,
+    5: 1,
+    1: 3
+  }
+*/
+
+function makeChange( amount ) {
+    var change = {};
+    var quarters = Math.floor(amount/25);
+    change[25]=quarters;
+    var remainder = amount - (quarters*25);
+    var dimes = Math.floor(remainder/10);
+    change[10]=dimes;
+    remainder = remainder - (dimes*10);
+    var nickels = Math.floor(remainder/5);
+    change[5]=nickels;
+    remainder = remainder - (nickels*5);
+    var pennies = remainder/1;
+    change[1]=pennies;
+    return change;
+}
+
+/*
+simpleCargoDistribution: given an array of cargo containers and their weights,
+distribute the weight as evenly as possible.  The aircraft has 2
+rows of container slots
+Return an array of the 2 rows of cargo slots and the weight in each
+input:
+  [12,50, 120, 20, 34, 220, 50, 20, 30, 30, 90]
+output:
+  [
+    [220, 50, 34, 30, 20],
+    [120, 90, 50, 30, 20, 12 ]
+  ]
+
+*/
+function simpleCargoDistribution( cargoList ) {
+    cargoList.sort((a,b)=>b-a)
+    var slot1 = [cargoList[0]];
+    var slot2 = [cargoList[1],cargoList[2]];
+    var output = [];
+    for(var c1=3;c1<cargoList.length;c1+=2){
+        slot1.push(cargoList[c1]);
+    }
+    for(var c2=4;c2<cargoList.length;c2+=2){
+        slot2.push(cargoList[c2]);
+    }
+    output.push(slot2);
+    output.push(slot1);
+    return output;
+}
+
+/*
+quakeSort: given an array of objects, sort them from least to greatest and return the array of earthquake objects.
+If the 2nd input is true, sort them by their date instead.  Date sort is oldest to most recent
+input1:
+  [
+    { location: 'Bio-Bio, Chile', magnitude: 9.6, date: '1960-05-22'},
+    { location: 'Northern Sumatra, Indonesia', magnitude: 8.6, date: '2005-03-28'},
+    { location: 'Kuril Islands', magnitude: 8.5, date: '1963-10-13'},
+  ]
+  false
+output1:
+  [
+    { location: 'Kuril Islands', magnitude: 8.5, date: '1963-10-13'},
+    { location: 'Northern Sumatra, Indonesia', magnitude: 8.6, date: '2005-03-28'},
+    { location: 'Bio-Bio, Chile', magnitude: 9.6, date: '1960-05-22'},
+  ]
+input2:
+  [
+    { location: 'Bio-Bio, Chile', magnitude: 9.6, date: '1960-05-22'},
+    { location: 'Northern Sumatra, Indonesia', magnitude: 8.6, date: '2005-03-28'},
+    { location: 'Kuril Islands', magnitude: 8.5, date: '1963-10-13'},
+  ]
+  true
+output2:
+  [
+    { location: 'Bio-Bio, Chile', magnitude: 9.6, date: '1960-05-22'},
+    { location: 'Kuril Islands', magnitude: 8.5, date: '1963-10-13'},    
+    { location: 'Northern Sumatra, Indonesia', magnitude: 8.6, date: '2005-03-28'},
+  ]
+*/
+
+function quakeSort( quakeList, sortByDate){
+    if(sortByDate===false){
+        quakeList.sort((a,b)=>a.magnitude-b.magnitude)
+    } else if(sortByDate===true){
+        quakeList.sort((a,b)=>a.date.substring(0,3)-b.date.substring(0,3))
+    }
+    return quakeList;
+}
+
+
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>
