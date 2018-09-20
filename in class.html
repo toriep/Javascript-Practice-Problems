@@ -635,6 +635,30 @@ function flattenArray(arr){
 
 let notFlat = ['b',['a'],2,[[null]],1]
 
+function areArgumentsSame(first,second){
+    if(typeof first !== "object"){
+        return first === second ? true : false;
+    } else{
+        if(Object.keys(first).length!==Object.keys(second).length){
+            return false;
+        } else{
+            let trueCounter = 0;
+            let length = Object.keys(second).length;
+            for(var key in first){
+            if(first[key]===second[key]){
+                trueCounter++;
+            }
+        }
+        return trueCounter === length ? true : false;
+        } 
+    }
+}
+
+let a= {dinner: 'steak'}
+let b = {dinner: 'steak'}
+let c = [1,2,3]
+let d = [1,2,3]
+
 </script>
 </head>
 
