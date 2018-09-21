@@ -633,7 +633,7 @@ function flattenArray(arr){
     return output;
 }
 
-let notFlat = ['b',['a'],2,[[null]],1]
+let notFlat = ['b',['a',2],2,[[null]],1]
 
 function areArgumentsSame(first,second){
     if(typeof first !== "object"){
@@ -658,6 +658,10 @@ let a= {dinner: 'steak'}
 let b = {dinner: 'steak'}
 let c = [1,2,3]
 let d = [1,2,3]
+
+function removeArrElement(arr1,arr2){
+    return arr1.filter((x)=>!arr2.includes(x));
+}
 
 </script>
 </head>
