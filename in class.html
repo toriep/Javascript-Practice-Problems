@@ -663,6 +663,19 @@ function removeArrElement(arr1,arr2){
     return arr1.filter((x)=>!arr2.includes(x));
 }
 
+function returnTimesToReturnASingleDigit(integer){
+    var numArray = null;
+    integer = integer;
+    var times = 0
+    
+    while(integer.toString().length>1){
+        numArray = integer.toString().split("").map(Number);
+        integer =  numArray.reduce( (a,b) => a * b );
+        times++;
+    }
+    return times +1;
+}
+
 </script>
 </head>
 
