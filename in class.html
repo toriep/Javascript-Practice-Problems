@@ -676,6 +676,30 @@ function returnTimesToReturnASingleDigit(integer){
     return times +1;
 }
 
+function factorialize(number) {
+    if (number < 0) 
+            return 'Invalid input. Positive number only';
+    else if (number == 0) 
+      return 1;
+    else {
+        return (number * factorialize(number - 1));
+    }
+}
+
+const uniqueInOrder = (iterable)=>{
+    if(typeof iterable==='string'){
+        iterable=iterable.split("");
+    }
+    for(let a=0;a<iterable.length;a++){
+        for(let i=1;i<iterable.length;i++){
+            if(iterable[i]===iterable[i-1]){
+                iterable.splice(i,1);
+            }
+        }
+    }
+    return iterable;
+}
+
 </script>
 </head>
 
