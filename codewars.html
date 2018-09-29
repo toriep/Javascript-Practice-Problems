@@ -487,6 +487,19 @@ function findDivisors(integer) {
   return typeof divisorsArray[0]==='number' ? divisorsArray : `${integer} is prime`;
 };
 
+function removeSmallest(numbers) {
+    var smallest = numbers[0];
+    for(let i=0;i<numbers.length;i++){
+        if(numbers[i]<smallest){
+            smallest = numbers[i];
+        }
+    }
+    let index = numbers.indexOf(smallest);
+    let array = numbers.slice();
+    array.splice(index,1);
+    return array;
+}
+
 </script>
 
     
