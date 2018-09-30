@@ -523,7 +523,7 @@ function findProduct(values) {
 
 function longest(s1, s2) {
     var s1Object = {};
-    for(var i=0,;i<s1.length;i++){
+    for(var i=0;i<s1.length;i++){
         if(!s1Object[s1[i]]){
             s1Object[s1[i]] = 1;
         }
@@ -534,6 +534,10 @@ function longest(s1, s2) {
         }
     }
     return Object.keys(s1Object).sort().join("");
+}
+
+function checkForFriend(friends){
+    return friends.filter(x=>x.length===4);
 }
 
 </script>
