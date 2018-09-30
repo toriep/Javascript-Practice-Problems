@@ -75,6 +75,23 @@
             output.push(add,minus,multiply,divide);
             return output;
         }
+
+        var myArray = ['cat','caterpillar','whale','accurate','smile','cactus','cute'];
+        var str = 'cat'
+        function fittingWords(str,arr){
+            var output = [];
+            for(var a=0;a<arr.length;a++){
+                var counter = 0;
+                var letter = arr[a];
+                for(var s=0;s<str.length;s++){
+                    if(letter.includes(str[s])){
+                        counter++;
+                    }
+                }
+                if(counter===3) output.push(letter);
+            }
+            return output;
+        }
     </script>
 </head>
 <body>
