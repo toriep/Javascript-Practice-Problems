@@ -500,6 +500,42 @@ function removeSmallest(numbers) {
     return array;
 }
 
+function getSum( a,b ){
+    let numbers = [];
+    let start = Math.min(a,b)
+    let end = Math.max(a,b);
+    for(let i=start;i<=end;i++){
+        numbers.push(i);
+    }
+    return numbers.reduce((x,y)=>x+y);
+}
+
+function findProduct(values) {
+    if(values===null || values.length===0){
+        return null;
+    }
+    var sum = values[0];
+    for(let i=1;i<values.length;i++){
+        sum = sum*values[i];
+    }
+    return sum;
+}
+
+function longest(s1, s2) {
+    var s1Object = {};
+    for(var i=0,;i<s1.length;i++){
+        if(!s1Object[s1[i]]){
+            s1Object[s1[i]] = 1;
+        }
+    }
+    for(var i=0;i<s2.length;i++){
+        if(!s1Object[s2[i]]){
+            s1Object[s2[i]] = 1;
+        }
+    }
+    return Object.keys(s1Object).sort().join("");
+}
+
 </script>
 
     
