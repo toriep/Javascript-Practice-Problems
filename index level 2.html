@@ -24,6 +24,16 @@
                 
             }
         }
+
+        function search_array(haystack,needle){
+            var output = []
+            for(var n=0;n<needle.length;n++){
+                if(haystack.includes(needle[n])){
+                    output.push(needle[n]);
+                }
+            }
+            return output;
+        }
     </script>
 </head>
 <body>
