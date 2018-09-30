@@ -21,6 +21,22 @@
         }
         return answer;
     }
+
+    var array1 = [ [1,2,3], [3,4,5], [6,7,8] ]; 
+    var array2 = [ [1,2,3], [1,2,3], [1,2,3] ];
+    function matrix_add(arr1,arr2){
+        let answer = [];
+        for(var i=0;i<arr1.length;i++){
+            let output = [];
+            for(var a=0;a<arr1[i].length;a++){
+                let num = arr1[i][a]+arr2[i][a];
+                output.push(num);
+            }
+            answer.push(output);
+        }
+        return answer;
+    }
+    console.log(matrix_add(array1,array2));
     </script>
 </head>
 <body>
