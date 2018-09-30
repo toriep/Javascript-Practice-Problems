@@ -548,6 +548,17 @@ function breakChocolate(n,m) {
   return n===0 || m===0 ? 0 : n*m-1;
 }
 
+const findLargest5Digits = num => {
+    num = num + "";
+    let fiveDigits = Number(num.substr(0,5));
+    for(var s=1;s<num.length;s++){
+        if(Number(num.substr(s,5))>fiveDigits){
+            fiveDigits = Number(num.substr(s,5));
+        }
+    }
+    return fiveDigits;
+}
+
 </script>
 
     
