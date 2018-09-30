@@ -19,11 +19,13 @@
         }
 
         function fibonacci(number){
-            var result=[0,1];
-            for(var a=0;a<=number;a++){
-                
+            var output = [0,1];
+            for(var i=1;i<number-1;i++){
+                output.push(output[output.length-1]+output[output.length-2]);
             }
+            return output;
         }
+
 
         function search_array(haystack,needle){
             var output = []
