@@ -678,7 +678,7 @@ function returnTimesToReturnASingleDigit(integer){
 
 function factorialize(number) {
     if (number < 0) 
-            return 'Invalid input. Positive number only';
+        return 'Invalid input. Positive number only';
     else if (number == 0) 
       return 1;
     else {
@@ -719,6 +719,17 @@ function cakes(recipe,ingredients){
         }
     possibleArr.sort((a,b)=>{a-b});
     return possibleArr[0];
+}
+
+function increment(str){
+    if(isNaN(str[str.length-1])){
+        return str + 1
+    }
+    var numbers = /[0-9]/g;
+    let extracted = parseInt(str.match(numbers).join(""));
+    let index = str.indexOf(extracted);
+    return str.slice(0,index) + (extracted+1);
+
 }
 
 </script>
