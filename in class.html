@@ -738,12 +738,30 @@ function increment(str){
 // `MMMYY  //ex: Oct18` (edited)
 function convertDateFormat(date){
     const monthNames = ["filler","January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-    ];
+    "July", "August", "September", "October", "November", "December"];
 
     let year = date.substr(2,2);
     let month = Number(date.substr(4,2));
     return monthNames[month].substr(0,3)+year;
+}
+
+// Write a function that takes in a string and sorts it. Each word in the string will contain a single number. This number determines the order in which the words should be returned.
+
+// ex: "is2 Thi1s T4est 3a" 
+// should return "Thi1s is2 3a T4est"
+function orderString(str){
+    let numbers = /[0-9]/g;
+    let sorted = str.match(numbers).sort();
+    let strArr = str.split(" ");
+    let result = [];
+        for(let i=0;i<sorted.length;i++){
+            for(let k=0;k<strArr.length;k++){
+                if(strArr[k].includes(sorted[i])){
+                    result.push(strArr[k])
+            }
+        }
+    }
+    return result.join(" ");
 }
 
 </script>
