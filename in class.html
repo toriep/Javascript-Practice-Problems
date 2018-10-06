@@ -732,6 +732,20 @@ function increment(str){
 
 }
 
+// Given a date period in the following format :
+// `YYYYMM  //ex: 201810`
+// Output the same date period in the following format :
+// `MMMYY  //ex: Oct18` (edited)
+function convertDateFormat(date){
+    const monthNames = ["filler","January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+    ];
+
+    let year = date.substr(2,2);
+    let month = Number(date.substr(4,2));
+    return monthNames[month].substr(0,3)+year;
+}
+
 </script>
 </head>
 
