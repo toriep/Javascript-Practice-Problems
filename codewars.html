@@ -231,17 +231,47 @@ persistence(999) === 4 // because 9*9*9 = 729, 7*2*9 = 126,
 
 persistence(4) === 0 // because 4 is already a one-digit number*/
 
-// function persistence(num) {
-// function persist(num){
-//     if(num===undefined){
-//         var numArray = num.toString().split("").map(Number);
-//         num =  numArray.reduce( (a,b) => a * b );
-//         return num;
-//     } else{
-//     return persist;
-//     }
-// }
-// }
+function persistence(num) {
+function persist(num){
+    if(num===undefined){
+        var numArray = num.toString().split("").map(Number);
+        num =  numArray.reduce( (a,b) => a * b );
+        return num;
+    } else{
+    return persist;
+    }
+}
+}
+
+function persistence(num) {
+    var counter = 1;
+
+    function doThis(num){
+        var numString = num + '';
+
+        if(numString.length===1){
+            return 0;
+        } else{
+            var numArray = numString.split('');
+            numArray = numArray.map((a) => parseInt(a));
+            var returnedAns = helpMultiply(numArray);
+            var backToStr = returnedAns + '';
+            if(backToStr.length===1){
+                return 1;
+            } else {
+                doThis(returnedAns);
+            }
+            counter++;
+            return counter; 
+        }
+    }
+
+    function helpMultiply(arr){
+        return arr.reduce( (a,b) => a * b );
+    }
+
+   return doThis(num);
+}
 
 function add(initialValue){
     function adder(nextVal){
