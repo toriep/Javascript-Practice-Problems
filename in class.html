@@ -764,6 +764,32 @@ function orderString(str){
     return result.join(" ");
 }
 
+// `toUnderscore('MoviesAndBooks'); // returns 'movies_and_books'`
+// `toUnderscore('App7Test'); // returns 'app7_test'`
+// `toUnderscore(1); // returns '1'`
+
+function toUnderscore(str){
+    let uppercase = /[A-Z]/;
+    let underscore = "_"
+    let output = [];
+    if(typeof str === 'number'){
+        return str;
+    }
+    for(let i=0;i<str.length;i++){
+        let letter = str[i];
+        if(letter.match(uppercase)){
+            if(i===0){
+                output.push(letter.toLowerCase())
+            } else {
+                output.push(underscore,letter.toLowerCase())
+            }
+        } else{
+            output.push(letter);
+        }
+    }
+    return output.join("");
+}
+
 </script>
 </head>
 
