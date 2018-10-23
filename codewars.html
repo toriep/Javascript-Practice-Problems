@@ -594,6 +594,43 @@ const findLargest5Digits = num => {
 //     return arr.map(x=>Math.pow(x,2)).map(x=>x+"");
 // }
 
+
+function convertDateFormat(date){
+    const monthNames = ["filler","January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+    let year = date.substr(2,2);
+    let month = Number(date.substr(4,2));
+    return monthNames[month].substr(0,3)+year;
+}
+
+//'2018-10-19T14:06:00.000Z'
+function readeableDate(date){
+    date = date.slice(0, 19).replace('T', ' ') ;
+    //2018-10-19 14:06:00
+    let time = date.substr(11,8);
+    //"14:06:00"
+    var hour = Number(time.substr(0,2));
+    let amOrpm = 'am'
+    if(hour>12){
+        hour = hour - 12;
+        amOrpm = 'pm'
+    }
+    var minute = Number(time.substr(3,2));
+    if(minute<10){
+        minute = "0"+minute;
+    }
+    time = hour+":"+minute + amOrpm;
+    return time;
+}
+
+const digital_root = n => {
+    if (n<10) return n;
+    else {
+        return digital_root(n.toString().split('').map(x=>Number(x)).reduce((total,current)=>total+current));
+    }
+}
+
 </script>
 
     

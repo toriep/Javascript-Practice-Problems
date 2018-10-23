@@ -790,6 +790,23 @@ function toUnderscore(str){
     return output.join("");
 }
 
+// `humanReadable(5) //returns "00:00:05"`
+// `humanReadable(60)  //returns "00:01:00"`
+// `humanReadable(86399) //returns "23:59:59"`
+
+function humanReadable(int){
+    switch (int){
+        case int<10:
+            return `00:00:0${int}`;
+            break;
+        case int<60 && int>9:
+            return `00:00:${int}`;
+            break;
+        default: 
+            return 'not a number'
+    }
+}
+
 </script>
 </head>
 
