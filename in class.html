@@ -738,12 +738,73 @@ function increment(str){
 // `MMMYY  //ex: Oct18` (edited)
 function convertDateFormat(date){
     const monthNames = ["filler","January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-    ];
+    "July", "August", "September", "October", "November", "December"];
 
     let year = date.substr(2,2);
     let month = Number(date.substr(4,2));
     return monthNames[month].substr(0,3)+year;
+}
+
+// Write a function that takes in a string and sorts it. Each word in the string will contain a single number. This number determines the order in which the words should be returned.
+
+// ex: "is2 Thi1s T4est 3a" 
+// should return "Thi1s is2 3a T4est"
+function orderString(str){
+    let numbers = /[0-9]/g;
+    let sorted = str.match(numbers).sort();
+    let strArr = str.split(" ");
+    let result = [];
+        for(let i=0;i<sorted.length;i++){
+            for(let k=0;k<strArr.length;k++){
+                if(strArr[k].includes(sorted[i])){
+                    result.push(strArr[k])
+            }
+        }
+    }
+    return result.join(" ");
+}
+
+// `toUnderscore('MoviesAndBooks'); // returns 'movies_and_books'`
+// `toUnderscore('App7Test'); // returns 'app7_test'`
+// `toUnderscore(1); // returns '1'`
+
+function toUnderscore(str){
+    let uppercase = /[A-Z]/;
+    let underscore = "_"
+    let output = [];
+    if(typeof str === 'number'){
+        return str;
+    }
+    for(let i=0;i<str.length;i++){
+        let letter = str[i];
+        if(letter.match(uppercase)){
+            if(i===0){
+                output.push(letter.toLowerCase())
+            } else {
+                output.push(underscore,letter.toLowerCase())
+            }
+        } else{
+            output.push(letter);
+        }
+    }
+    return output.join("");
+}
+
+// `humanReadable(5) //returns "00:00:05"`
+// `humanReadable(60)  //returns "00:01:00"`
+// `humanReadable(86399) //returns "23:59:59"`
+
+function humanReadable(int){
+    switch (int){
+        case int<10:
+            return `00:00:0${int}`;
+            break;
+        case int<60 && int>9:
+            return `00:00:${int}`;
+            break;
+        default: 
+            return 'not a number'
+    }
 }
 
 </script>
