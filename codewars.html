@@ -685,6 +685,24 @@ function factorial (n) {
     return numArray.reduce((a,b)=>a*b);
 }
 
+function array_diff(a, b) {
+    var countObj = {};
+    var result = [];
+    for(var i=0;i<b.length;i++){
+        if(!countObj[b[i]]){
+            countObj[b[i]]=1 
+        } else{
+            countObj[b[i]]++
+        }
+    }
+    for(var i=0;i<a.length;i++){
+        if(!countObj[a[i]]){
+            result.push(a[i]);
+        }
+    }
+    return result;
+}
+
 </script>
 
     
