@@ -703,6 +703,15 @@ function array_diff(a, b) {
     return result;
 }
 
+function isTriangle(a,b,c){
+   let isTriangle = [a,b,c].sort((a,b)=>a-b);
+   if((isTriangle[0]+isTriangle[1])>isTriangle[2]){
+       return true;
+   } else {
+       return false;
+   }
+}
+
 </script>
 
     
