@@ -762,6 +762,23 @@ function findEvenIndex(arr){
     }
     return trueCounter ? indexNo : -1
 }
+
+
+//  [[18, 20],[45, 2],[61, 12],[37, 6],[21, 21],[78, 9]]
+//  ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+function openOrSenior(data){
+    let result =  data.map(person=>{
+             var counter = 0;
+            if(person[0]>=55){
+                counter++
+            }
+            if(person[1]>7){
+                counter++
+            }
+            return counter === 2 ? 'Senior' : 'Open'
+    })
+    return result;
+}
 </script>
 
     
