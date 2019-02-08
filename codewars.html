@@ -767,8 +767,8 @@ function findEvenIndex(arr){
 //  [[18, 20],[45, 2],[61, 12],[37, 6],[21, 21],[78, 9]]
 //  ["Open", "Open", "Senior", "Open", "Open", "Senior"]
 function openOrSenior(data){
-    let result =  data.map(person=>{
-             var counter = 0;
+    return data.map(person=>{
+            var counter = 0;
             if(person[0]>=55){
                 counter++
             }
@@ -777,7 +777,15 @@ function openOrSenior(data){
             }
             return counter === 2 ? 'Senior' : 'Open'
     })
-    return result;
+}
+
+// [1,-4,7,12] => 1 + 7 + 12 = 20
+function positiveSum(arr) {
+    let positive = [0]
+    for(var i=0;i<arr.length;i++){
+        if(arr[i]>0) positive.push(arr[i]);
+    }
+    return positive.reduce((a,b)=>a+b);
 }
 </script>
 
