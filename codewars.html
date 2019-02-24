@@ -826,8 +826,8 @@ function convertToNegative(n){
     return -1*n;
 }
 
-function isEven(n){
-    return n%2===0
+function sort_object_list_by_field(obj,prop){
+    return obj.sort((a,b)=>b[prop]-a[prop]);
 }
 
 </script>
