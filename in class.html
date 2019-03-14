@@ -454,40 +454,40 @@ return outputString;
 }
 
 function letterTrain(numOfDifKindOfLetters, beginningLetter) {
-var outputString = "";
-if (beginningLetter) {
-var charCode = beginningLetter.charCodeAt(0);
-outputString += beginningLetter.toUpperCase();
-} else {
-var charCode = "a".charCodeAt(0);
-outputString += "a".toUpperCase();
-}
-for (var i = 2; i <= numOfDifKindOfLetters; i++) {
-var nextChar = String.fromCharCode(charCode + 1);
-outputString += "-"+nextChar.toUpperCase() + nextChar.repeat(i - 1);
-console.log(nextChar.toUpperCase());
-console.log(nextChar.repeat(i - 1))
-charCode = charCode + 1
-}
-console.log(performance.now())
-return outputString;
+    var outputString = "";
+    if (beginningLetter) {
+    var charCode = beginningLetter.charCodeAt(0);
+    outputString += beginningLetter.toUpperCase();
+    } else {
+    var charCode = "a".charCodeAt(0);
+    outputString += "a".toUpperCase();
+    }
+    for (var i = 2; i <= numOfDifKindOfLetters; i++) {
+    var nextChar = String.fromCharCode(charCode + 1);
+    outputString += "-"+nextChar.toUpperCase() + nextChar.repeat(i - 1);
+    console.log(nextChar.toUpperCase());
+    console.log(nextChar.repeat(i - 1))
+    charCode = charCode + 1
+    }
+    console.log(performance.now())
+    return outputString;
 }
 
 
 function findMissingLetter(sequence){
-var ASCII= [];
-for(var letter of sequence){
-    ASCII.push(letter.charCodeAt());
-}
-for(var a=0;a<ASCII.length;a++){
-    if(ASCII[a+1]-ASCII[a]!==1){
-        var ASCIInumber = ASCII[a]+1;
-        missingLetter = String.fromCharCode(ASCIInumber);
-        break;
+    var ASCII= [];
+    for(var letter of sequence){
+        ASCII.push(letter.charCodeAt());
     }
-}
-console.log(performance.now())
-return missingLetter;
+    for(var a=0;a<ASCII.length;a++){
+        if(ASCII[a+1]-ASCII[a]!==1){
+            var ASCIInumber = ASCII[a]+1;
+            missingLetter = String.fromCharCode(ASCIInumber);
+            break;
+        }
+    }
+    console.log(performance.now())
+    return missingLetter;
 }
 
 function returnPossibleDice(dices){

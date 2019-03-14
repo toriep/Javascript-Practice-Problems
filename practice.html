@@ -69,6 +69,41 @@
         }
         return true;
     }
+
+    function validAnagram(first, second) {
+        if (first.length !== second.length) {
+            return false;
+        }
+        const lookup = {};
+        for (let i = 0; i < first.length; i++) {
+            let letter = first[i];
+            lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1;
+        }
+        for (let i = 0; i < second.length; i++) {
+            let letter = second[i];
+            if (!lookup[letter]) {
+            return false;
+            } else {
+            lookup[letter] -= 1;
+            }
+        }
+        return true;
+    }
+
+    function countUniqueValues(arr){
+        if(arr.length===0) return 0;
+        let i = 0;
+        while(i<arr.length-1){
+            let j = i+1;
+            if(arr[i]===arr[j]){
+                arr.splice(i,1)
+            } else{
+                i++
+            }
+        }
+        return arr.length;
+    }
+
 </script>
 <body>
     
