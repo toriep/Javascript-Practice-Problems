@@ -141,6 +141,20 @@
         return max;
     }
 
+//[a,b,c,a] ==> true
+//[1,2,3,4] ==> false
+     function areThereDuplicates(arr) {
+        let obj = {}
+        for(let item of arr){
+            if(!obj[item]){
+                obj[item] = 1;
+            } else{
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 </script>
