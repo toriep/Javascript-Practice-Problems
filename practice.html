@@ -29,6 +29,26 @@
             return num * multiply(num-1);
         }
     }
+
+    function same(arr1,arr2){
+        let comparedObject1 = {};
+        let comparedObject2 = {};
+        let counter = 0
+        if(arr1.length!==arr2.length) return false;
+        arr1.forEach((c,i,a) => {
+            return a[i] = c ** 2
+        });
+        for(let number of arr1){
+            if(!comparedObject1[number]) comparedObject1[number] = 1
+        }
+        for(let num of arr2){
+            if(!comparedObject2[num]) comparedObject2[num] = 1
+        }
+        for(let number in comparedObject1){
+            if(comparedObject1[number]===comparedObject2[number]) counter ++;
+        }
+        return counter === arr1.length;
+    }
 </script>
 <body>
     
