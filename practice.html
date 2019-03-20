@@ -69,6 +69,94 @@
         }
         return true;
     }
+
+    function validAnagram(first, second) {
+        if (first.length !== second.length) {
+            return false;
+        }
+        const lookup = {};
+        for (let i = 0; i < first.length; i++) {
+            let letter = first[i];
+            lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1;
+        }
+        for (let i = 0; i < second.length; i++) {
+            let letter = second[i];
+            if (!lookup[letter]) {
+            return false;
+            } else {
+            lookup[letter] -= 1;
+            }
+        }
+        return true;
+    }
+
+    function countUniqueValues(arr){
+        if(arr.length===0) return 0;
+        let i = 0;
+        while(i<arr.length-1){
+            let j = i+1;
+            if(arr[i]===arr[j]){
+                arr.splice(i,1)
+            } else{
+                i++
+            }
+        }
+        return arr.length;
+    }
+
+//[1,2,3],5 ==> true
+//[1,3,3,5,7,10,12,19],8 ==> true
+    function averagePair(arr,target){
+        if(arr.length===0) return false;
+        let i = 0;
+        let j = arr.length-1;
+        while(i<arr.length-1){
+            let average = (arr[i]+arr[j])/2;
+            if(average > target){
+                j--;
+            } else if(average < target){
+                i++;
+            } else{
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //[1,2,3,4],2 ==> 7
+    //[2,3],3 ==> null
+    //[1,4,2,10,23,3,1,0,20], 4 ==> 39
+    function maxSubarraySum(arr,length){
+        if(arr.length < length) return null;
+        let max = 0;
+        let temp = 0;
+        for(let i=0; i<length;i++){
+            temp+=arr[i];
+        }
+        max = temp;
+        for(let j = length; j<arr.length;j++){
+            temp = temp + arr[j] - arr[j - length];
+            max = Math.max(max,temp);
+        }
+        return max;
+    }
+
+//[a,b,c,a] ==> true
+//[1,2,3,4] ==> false
+     function areThereDuplicates(arr) {
+        let obj = {}
+        for(let item of arr){
+            if(!obj[item]){
+                obj[item] = 1;
+            } else{
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 </script>
 <body>
     
